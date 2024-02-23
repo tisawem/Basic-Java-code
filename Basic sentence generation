@@ -1,0 +1,288 @@
+import java.util.Random;
+import java.util.Scanner;
+
+//主程序
+
+//枚举及枚举数据处理
+enum 主语 {
+    我, 你, 他, 我们, 他们, 她, 它, 她们, 你们, us, they, she, it, them, あなた, 私たち,あなたたち,彼ら,彼女たち,每个人,其他人,everyone,others,所有人,FurryFans,作者
+
+
+}
+
+enum 动词 {
+    eat, 吃, drink, 喝, take, 拿, smell, 闻, bite, 咬, use, 用, say, 说, play, 玩, look, 看, learn, 学习, run, 跑, jump, 跳, write, 写, listen, 听, draw, 画, read, 读, 爱, 工作, 睡, 走, 跳舞, 唱歌, 阅读, 写作, 看电影, 打电话, 发送, 呼吸,游,划,戳,拽,拉,舔,吹,放,收,擦,pull,push,推, 思考, 梦想, 探险, love, work, sleep, travel, dance, sing, swim, watchMovies, makePhoneCall, sendEmail, breathe, think, dream, explore, 食べる, 寝る, 行く, 見る, 聞く, 話す, 書く, 買う, する, 来る
+}
+
+
+enum 名词 {
+    apple, 苹果, banana, 香蕉, pear, 梨, orange, 橙子, strawberry, 草莓, grape, 葡萄, potato, 土豆, chicken, 鸡肉, fish, 鱼肉, milk, 牛奶, water, 水, lemon, 柠檬, shrimp, 虾, watermelon, 西瓜, peas, 豆, carrot, 胡萝卜, cucumber, 黄瓜, book, 书, computer, 电脑, ball, 球, dog, 狗, cat, 猫, flower, 花, tree, 树, car, 汽车, phone, 手机, pen, 钢笔, clock, 钟, chair, 椅子, music, 音乐, coffee, 咖啡, 邮件, house, sun, moon, friend, family, city, beach, mountain, food, love, time, 房子, 车, 太阳, 月亮, 朋友, 家庭, 城市, 海滩, 山, 食物, 时间,fursuit
+}
+
+enum 状态 {
+    happy, 开心, sad, 伤心, energetic, 精力充沛, tired, 累, angry, 生气, happiness, 幸福, relax, 放松, excited, 激动, confused, 困惑, hungry, 饿, thirsty, 渴, satisfied, 满意, disappointed, 失望, enthusiastic, 热情, indifferent, 冷漠, anxious, 焦虑, quiet, 安静, weary, 疲倦, 高, 矮, 大, 小, 快, 慢, 美丽, 难看, 聪明, 愚蠢, 悲伤, 新鲜, 陈旧, 温暖, 冷酷, 快乐, 愤怒, 好吃, 难吃, tall, big, small, fast, slow, beautiful, ugly, smart, stupid, fresh, old, warm, cold, joyful, delicious, disgusting, 长, 短, 胖, 瘦, Long, Short, 高い, 低い, 美しい, 醜い, 大きい, 小さい, 新しい, 古い, 静かな, 賑やかな, 明るい, 暗い, 楽しい, 悲しい, 簡単な, 難しい,软fufu的,いぬ,ねこ,はな,うみ,やま,そら,じかん,せかい, しあわせ
+
+}
+
+/**
+ * @author tisawem
+ * @version 1.0 2024年2月16日，04点02分
+ * 刚刚接到通知，2024年，python淘汰了，万万没想到，有一天，Java居然能实现AI对话！
+ * 仅需不到1MB的一段程序，就能进行人机交流，拳打脚踢python
+ * 根据专家推测，就连ChatGPT都要落后本程序十万八千里
+ * 然而，这个AI的诞生仅靠一个平平无奇的大学生
+ * 据大学生描述，他才大一，只学习了一学期的Java知识，却解决了两千年来困扰人们的问题
+ * Java语言在公元前5年，它并不能胜任AI工作，古人无法使用Java进行人机交流
+ * 如今，这位大学生，打破了Java程序不能胜任AI工作的僵局，实现了碾压一切的可能
+ * 现在，Oracle高层领导莅临大学，寻找这位天才，要高薪聘请大学生
+ * 这位大学生说，他不需要工作，不求回报，只想把这个Java代码免费贡献给大家，
+ * 看看这大学生，多么的慷慨，多么地乐于奉献
+ */
+public class AI程序 {
+    /**
+     * “生成句子器” 类的 “句子” 方法需要一段话，main方法先审核用户输入的字符串是不是exit或退出，
+     * 若是，Java虚拟机结束程序，否则交给“生成句子器”类，让你看到Java版AI的厉害
+     * main方法在句子输出在控制台完后，询问是否退出，退出的条件就是
+     *
+     * @param args public static void main(String[] args)的args，啥都不需要
+     * @code scanner.hasNext(" 退出 ")| scanner.hasNext("exit")
+     * @see 生成句子器
+     */
+    public static void main(String[] args) {
+        System.out.println("现在开始聊天吧！\n不想聊的话，说“exit”或“退出”\n");
+
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            if (scanner.hasNext("退出") | scanner.hasNext("exit")) {
+                scanner.close();
+                break;
+            } else {
+                生成句子器 生成句子器 = new 生成句子器();
+                for (String 句子 : 生成句子器.句子(scanner.next())) {
+                    System.out.println(句子);
+                }
+                scanner.nextLine();
+
+            }
+        }
+
+    }
+}
+
+//段落处理，一维数组，每个元素都是一个句子，需要提供段落
+class 段落处理 {
+    /**
+     * @param 一段话 需要一个String类型的变量，这个变量俗称一段话，使用java.lang.String 类的split 方法，按照,.，。?？!！这些标点符号把一段话劈开，把劈开后的这些话保存在String[]类型“一段话按标点符号拆成Ｓｔｒｉｎｇ一维数组类型句子”。
+     * @return 把“一段话”分吧分吧，保存在一个String[]数组并返回
+     * @code 简称：return 一段话.split("[,.，。?？!！]");
+     */
+    String[] 一段话按标点符号拆成Ｓｔｒｉｎｇ一维数组类型句子(String 一段话) {
+        //按split括号里面的标点符号分隔一段话
+        return 一段话.split("[,.，。?？!！]");
+
+    }
+}
+
+/**
+ * 绝密类，机密类，Java实现人机交互的核心中的核心
+ *
+ * @code private String 状态选择器(String 句子) {
+ * <p>
+ * 枚举转换成Ｓｔｒｉｎｇ二维数组器 状态数组 = new 枚举转换成Ｓｔｒｉｎｇ二维数组器(); <p>
+ * for (String 状态 : 状态数组.生成Ｓｔｒｉｎｇ二维数组()[3]) { <p>
+ * if (句子.toLowerCase().contains(状态)) { <p>
+ * return 状态; <p>
+ * }
+ * <p>
+ * }
+ * Random 随机数 = new Random();//创建随机数实例
+ * return 状态数组.生成Ｓｔｒｉｎｇ二维数组()[3][随机数.nextInt(0, 状态数组.生成Ｓｔｒｉｎｇ二维数组()[3].length - 1)];
+ * }
+ * @see 枚举转换成Ｓｔｒｉｎｇ二维数组器
+ * @see 生成句子器
+ */
+class 主语动词名词状态选择器 {
+    private String 主语选择器(String 句子) {
+        枚举转换成Ｓｔｒｉｎｇ二维数组器 主语数组 = new 枚举转换成Ｓｔｒｉｎｇ二维数组器();
+        for (String 主语 : 主语数组.生成Ｓｔｒｉｎｇ二维数组()[0]) {
+            if (句子.toLowerCase().contains(主语)) {
+                return 主语;
+            }
+
+        }
+
+
+        Random 随机数 = new Random();//创建随机数实例
+        return 主语数组.生成Ｓｔｒｉｎｇ二维数组()[0][随机数.nextInt(0, 主语数组.生成Ｓｔｒｉｎｇ二维数组()[0].length - 1)];
+//"主语数组.生成Ｓｔｒｉｎｇ二维数组()[0]" 是一维数组,后面的[]是随机选择一维数组的一个元素,随机数.nextInt()是一个随机数,范围是0到数组长度减一
+    }
+
+    private String 动词选择器(String 句子) {
+        枚举转换成Ｓｔｒｉｎｇ二维数组器 动词数组 = new 枚举转换成Ｓｔｒｉｎｇ二维数组器();
+        for (String 谓语 : 动词数组.生成Ｓｔｒｉｎｇ二维数组()[1]) {
+            if (句子.toLowerCase().contains(谓语)) {
+                return 谓语;
+            }
+
+        }
+        Random 随机数 = new Random();//创建随机数实例
+        return 动词数组.生成Ｓｔｒｉｎｇ二维数组()[1][随机数.nextInt(0, 动词数组.生成Ｓｔｒｉｎｇ二维数组()[1].length - 1)];
+    }
+
+    private String 名词选择器(String 句子) {
+        枚举转换成Ｓｔｒｉｎｇ二维数组器 名词数组 = new 枚举转换成Ｓｔｒｉｎｇ二维数组器();
+        for (String 名词 : 名词数组.生成Ｓｔｒｉｎｇ二维数组()[2]) {
+            if (句子.toLowerCase().contains(名词)) {
+                return 名词;
+            }
+
+        }
+        Random 随机数 = new Random();//创建随机数实例
+        return 名词数组.生成Ｓｔｒｉｎｇ二维数组()[2][随机数.nextInt(0, 名词数组.生成Ｓｔｒｉｎｇ二维数组()[2].length - 1)];
+    }
+
+    private String 状态选择器(String 句子) {
+        枚举转换成Ｓｔｒｉｎｇ二维数组器 状态数组 = new 枚举转换成Ｓｔｒｉｎｇ二维数组器();
+        for (String 状态 : 状态数组.生成Ｓｔｒｉｎｇ二维数组()[3]) {
+            if (句子.toLowerCase().contains(状态)) {
+                return 状态;
+            }
+
+        }
+        Random 随机数 = new Random();//创建随机数实例
+        return 状态数组.生成Ｓｔｒｉｎｇ二维数组()[3][随机数.nextInt(0, 状态数组.生成Ｓｔｒｉｎｇ二维数组()[3].length - 1)];
+    }
+
+    /**
+     * @param 句子 一句话，哪里来，看class 生成句子器
+     *           要一个String类型的句子
+     * @return String[]，里面有AI选择好的主语，动词，名词，状态
+     */
+
+    /*一维数组，存储了四个元素：主语、动词、名词、状态
+    使用时需要提供一个String类型的数据
+    */
+
+    String[] 选择结果(String 句子) {
+        return new String[]{主语选择器(句子), 动词选择器(句子), 名词选择器(句子), 状态选择器(句子)};
+
+    }
+
+
+}
+
+//一维数组，每个元素都是一个拼接后的句子 ，需要提供段落
+class 生成句子器 {
+    /**
+     * @param 一段话 需要一个String类型的变量，这个变量俗称一段话，用来返回给“段落处理”类进行段落分句处理，
+     *            处理后，从“一段话按标点符号拆成Ｓｔｒｉｎｇ一维数组类型句子”数组里调用一个元素送给“主语动词名词状态选择器”类的“选择结果”方法
+     *            得到输出结果（String []类型），然后创建4个String类型变量，把结果里面每一个元素分别存放在4个String变量
+     *            “生成句子器”类的“句子”方法会把生成的多个句子保存在一个String数组进行返回，返回到main方法
+     * @return String[]类型的，存储了一堆AI生成的一句话
+     * @see 段落处理
+     * @see 主语动词名词状态选择器
+     */
+    String[] 句子(String 一段话) {
+        段落处理 段落处理 = new 段落处理();
+        主语动词名词状态选择器 主语动词名词状态选择器 = new 主语动词名词状态选择器();
+        String[] 临时句子存储器 = new String[段落处理.一段话按标点符号拆成Ｓｔｒｉｎｇ一维数组类型句子(一段话).length];
+
+        for (int i = 0; i < 临时句子存储器.length; i++) {
+            String 句子 = 段落处理.一段话按标点符号拆成Ｓｔｒｉｎｇ一维数组类型句子(一段话)[i];
+            String 主语 = 主语动词名词状态选择器.选择结果(句子)[0], 动词 = 主语动词名词状态选择器.选择结果(句子)[1], 名词 = 主语动词名词状态选择器.选择结果(句子)[2], 状态 = 主语动词名词状态选择器.选择结果(句子)[3];
+            临时句子存储器[i] = 主语 + " " + 动词 + " " + 名词 + " " + 状态 + "\n";
+        }
+        return 临时句子存储器;
+    }
+
+}
+
+class 枚举转换成Ｓｔｒｉｎｇ二维数组器 {
+
+    /**
+     * @return String一维数组，有一个枚举叫“主语”，存有“你我他”，枚举“主语”转成String一维数组并返回值
+     * @code for (int i=0;i<主语.values().length;i++){
+     * 存储主语的数组[i]=主语.values()[i].name().toLowerCase();
+     * }
+     */
+    private String[] 主语() {
+        String[] 存储主语的数组 = new String[主语.values().length];
+        for (int i = 0; i < 主语.values().length; i++) {
+            存储主语的数组[i] = 主语.values()[i].name().toLowerCase();
+
+
+        }
+        return 存储主语的数组;
+    }
+
+    //主语.values()[i].name().toLowerCase()
+    //(枚举)主语.转换为主语一维数组类型[第i个元素].主语类型转为string类型.转为小写
+
+    /**
+     * @return 返回String一维数组，详情请跳转到“枚举转换成Ｓｔｒｉｎｇ二维数组器”类的“主语”方法
+     */
+    private String[] 动词() {
+        String[] 存储动词的数组 = new String[动词.values().length];
+        for (int i = 0; i < 动词.values().length; i++) {
+            存储动词的数组[i] = 动词.values()[i].name().toLowerCase();
+
+
+        }
+        return 存储动词的数组;
+    }
+
+    /**
+     * @return 返回String一维数组，详情请跳转到“枚举转换成Ｓｔｒｉｎｇ二维数组器”类的“主语”方法
+     */
+
+    private String[] 名词() {
+        String[] 存储名词的数组 = new String[名词.values().length];
+        for (int i = 0; i < 名词.values().length; i++) {
+            存储名词的数组[i] = 名词.values()[i].name().toLowerCase();
+
+
+        }
+        return 存储名词的数组;
+    }
+
+    /**
+     * @return 返回String一维数组，详情请跳转到“枚举转换成Ｓｔｒｉｎｇ二维数组器”类的“主语”方法
+     */
+
+    private String[] 状态() {
+        String[] 存储状态的数组 = new String[状态.values().length];
+        for (int i = 0; i < 状态.values().length; i++) {
+            存储状态的数组[i] = 状态.values()[i].name().toLowerCase();
+
+
+        }
+        return 存储状态的数组;
+    }
+
+    /**
+     * @return 返回String二维数组，“枚举转换成Ｓｔｒｉｎｇ二维数组器”类的4个方法返回的String[]类型，拼成一个二维数组并返回
+     * @see 主语动词名词状态选择器
+     * 二维数组
+     * <p>
+     * 【0 主语】【eg：你我他】<p>
+     * 【1 动词】【eg：吃喝玩】<p>
+     * 【2 名词】【eg：水果蔬菜肉】<p>
+     * 【3 状态】【eg：开心放松】
+     */
+    public String[][] 生成Ｓｔｒｉｎｇ二维数组() {
+        String[][] 枚举转换结果 = new String[4][];
+        枚举转换结果[0] = 主语();
+        枚举转换结果[1] = 动词();
+        枚举转换结果[2] = 名词();
+        枚举转换结果[3] = 状态();
+        return 枚举转换结果;
+    }
+    /*二维数组
+    【0 主语】【eg：你我他】
+    【1 动词】【eg：吃喝玩】
+    【2 名词】【eg：水果蔬菜肉】
+    【3 状态】【eg：开心放松】
+    */
+
+}
+
