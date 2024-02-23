@@ -1,0 +1,234 @@
+import java.util.Scanner;
+public class test {
+    public static class 加减乘除 {
+        public static boolean 没完成计算 ;
+        public static double 数字检测(String[] 数字检测输入)throws Throwable {
+            //System.out.println(0/0);//这个代码人为的制造了一个错误
+            //意思是数字检测里面的代码可能throws（抛）了一个报错，throwable包含了一切错误，而不是具体的错误
+            //这个错误抛给了“收集信息”，收集信息如果有try-catch，而且有对症的catch，就执行这个catch的代码
+            //这里是没有的，再找上一级，找到main方法，main方法也没有，就崩了。
+            //JVM 找的是执行过try的catch块。
+
+            while (true){
+                try {
+                    Double.parseDouble(数字检测输入[0]);
+                    break;
+				/*字符串转double，转不了会报NumberFormatException
+				代码不出错就跳过try-catch，
+				代码出错，匹配到catch里的哪个错误，
+				就执行哪个代码，比如报了NumberFormatException
+				就执行catch (NumberFormatException 错误) {}里的代码
+
+				没有对应的 catch 块来捕获这个特定类型的异常，那么会发生以下情况：
+                异常会被“抛出”（propagate）到当前方法的调用者，
+                然后继续向上冒泡至调用栈（call stack），直到被一个合适的 catch 块捕获。
+                如果在调用栈的任何层次上都没有找到合适的 catch 块来处理这个异常，
+                那么异常会到达程序的顶层。
+
+                当异常到达程序的顶层而未被捕获时，导致程序终止运行，会打印一个错误消息
+                finally 块的执行：
+                即使异常未被捕获，finally 块中的代码仍然会被执行。
+                finally 块通常用于执行清理工作，比如关闭文件或释放资源。
+
+                Throwable 包含了几乎所有错误
+                Exception 包含了一般错误
+                Error 包含了编译器的错误
+				*/
+                }
+                catch (NumberFormatException 报错变量) {
+                    //将NumberFormatException赋值给报错变量
+                    System.out.println("输入的“" +数字检测输入[0]+
+                            "”无效，请输入阿拉伯数字");
+                    Scanner 用户输入 = new Scanner(System.in);
+                    数字检测输入[0]=用户输入.next();
+                }
+                finally {
+                    //finally 块是可选的，用于包含无论是否发生异常都需要执行的代码。
+                    // 无论异常是否被捕获或处理，finally 块中的代码都会被执行。
+
+                    //有关递归调用的说明：
+
+                    //test.main(new String[1]);
+                    //这个代码涉及递归调用，尽量避免
+                    //也就是执行到test.main(new String[1])后，
+                    // 原来的内存空间不会释放，而是累加
+                    //如果又来到这，又跳到main方法，内存又累加
+                    // 到达一定地步内存就满了，就栈溢出
+                    //解决办法就是避免递归调用
+
+                    //如果你真的想调用
+                    //main方法后面有个(),括号里有个数组，
+                    // 然后必须得写上(new String[1])
+                    //等同于String[]args=new String[1]
+                    //你也可以
+                    //String[]args=null，
+                    //String[]args=new String[]{"I love you!"}
+                    //main方法后面括号没有String[]args时，test.main();即可
+
+                }
+            }
+
+
+
+
+            return Double.parseDouble(数字检测输入[0]);
+            //将string转为double类型返回给数字检测
+        }
+        public static void 收集信息() throws Throwable {
+            System.out.println("输入第一个");
+            Scanner 用户输入 = new Scanner(System.in);
+            double 第一个数字 = 加减乘除.数字检测(new String[]{用户输入.next()}), 第二个数字;
+            //这段代码的的意思是建立两个double型变量，一个是“第一个数字”，另一个是“第二个数字”
+			/*第一个数字 是 加减乘除类 里面的 数字检测（String[] 数字检测输入） ，
+			数字检测返回double值，数字检测后面有（String[] 数字检测输入），
+			所以String[] 数字检测输入=new String[]{用户输入.next()}，大括号里是string*/
+
+            System.out.println("你输入了第一个数字：" + 第一个数字 + "\n" + "输入第二个");
+            第二个数字 = 加减乘除.数字检测(new String[]{用户输入.next()});
+            System.out.println("你输入了第二个数字：" + 第二个数字 + "\n你要" + 第一个数字 + "加上，减去，乘以，还是除以" + 第二个数字 + "?" + "\n提示：打入：加上，减去，乘以，除以");
+            while (没完成计算) {//将循环检测用户怎么处理这两个数字
+                switch (用户输入.next()) {
+                    //String[]运算的公式 的 第一个数组 是 第一个数字
+                    //第二个数组 是 第二个数字
+                    //第三个数组是 加上，减去，乘以，除以 其一
+                    case "加上": {
+                        加减乘除.运算(new String[]{String.valueOf(第一个数字), String.valueOf(第二个数字), "加上"});
+                        没完成计算 =false;
+                        break;
+                    }
+                    case "减去": {
+                        加减乘除.运算(new String[]{String.valueOf(第一个数字), String.valueOf(第二个数字), "减去"});
+                        没完成计算 =false;
+                        break;
+                    }
+                    case "乘以": {
+                        加减乘除.运算(new String[]{String.valueOf(第一个数字), String.valueOf(第二个数字), "乘以"});
+                        没完成计算 =false;
+                        break;
+                    }
+                    case "除以": {
+                        加减乘除.运算(new String[]{String.valueOf(第一个数字), String.valueOf(第二个数字), "除以"});
+                        没完成计算 =false;
+                        break;
+                    }
+                    default: {
+                        System.out.println("打入：加上，减去，乘以，除以" + "\n你要" + 第一个数字 + "加上，减去，乘以，还是除以" + 第二个数字 + "?");
+                        用户输入.nextLine();
+                        continue;
+                    }
+                }//switch的大括号
+
+
+            }//while的大括号
+        }
+        public static void 运算(String[] 运算的公式) {
+            switch (运算的公式[2]) {
+                case "加上": {
+                    System.out.println(运算的公式[0] + 运算的公式[2] +
+                            运算的公式[1] + "等于" +
+                            (
+                                    Double.parseDouble(运算的公式[0]) +
+                                            Double.parseDouble(运算的公式[1])
+                            )
+                    );
+
+                    break;
+                }
+                case "减去": {
+                    System.out.println(运算的公式[0] + 运算的公式[2] +
+                            运算的公式[1] + "等于" +
+                            (
+                                    Double.parseDouble(运算的公式[0]) -
+                                            Double.parseDouble(运算的公式[1])
+                            )
+                    );
+
+                    break;
+                }
+                case "乘以": {
+                    System.out.println(运算的公式[0] + 运算的公式[2] +
+                            运算的公式[1] + "等于" +
+                            (
+                                    Double.parseDouble(运算的公式[0]) *
+                                            Double.parseDouble(运算的公式[1])
+                            )
+                    );
+
+                    break;
+                }
+                case "除以": {
+                    if (Double.parseDouble(运算的公式[1]) != 0.0) {
+                        System.out.println(运算的公式[0] + 运算的公式[2] +
+                                运算的公式[1] + "等于" +
+                                (Double.parseDouble(运算的公式[0]) /
+                                        Double.parseDouble(运算的公式[1])
+                                )
+                        );
+
+                        break;//判断运算的公式[1]是否为0
+
+                    } else {//除以0后提示，虽然Java认为0÷0=NaN
+                        System.out.println("错误：除以0");
+
+                        break;
+                    }
+                }
+            }
+        }
+    }//类 加减乘除 的大括号
+
+    public static void main(String[] args) {//程序起点
+
+        Scanner 用户输入 = new Scanner(System.in);
+        main方法的唯一一个while:
+        while (true) {
+            加减乘除.没完成计算=true;
+            System.out.println("你想要干什么？\n" +
+                    "1、计算加减乘除\n2、退出程序\n输入数字：");
+            if (用户输入.hasNextInt()) {
+                switch (用户输入.nextInt()) {
+                    case 1: {
+                        try{
+                            加减乘除.收集信息();
+                            break;
+                        }
+                        catch (Throwable 任何错误){
+                            System.out.println("我可不管了，这是我练习Java写的代码，学校还没让我们在main方法之外写代码、捕获错误\n" +
+                                    "退出代码是B站账号的uid\n" +
+                                    "屎山代码的缔造者：tisawem");
+                            System.exit(367911078);
+                        }
+                        finally {
+                            System.out.println("屎山代码的缔造者：Tisawem");
+                        }
+                    }
+                    case 2: {
+                        System.exit(114514);
+                    }
+                    default: {
+                        System.out.println("""
+                                输入无效
+                                你想要干什么？
+                                1、计算加减乘除
+                                2、退出程序
+                                输入数字：""");
+
+                        break;
+                    }
+                }//switch的括号
+            }//if的大括号
+            else {
+                System.out.println("""
+                        输入无效
+                        你想要干什么？
+                        1、计算加减乘除
+                        2、退出程序
+                        输入数字：""");
+            }//else的大括号
+            用户输入.nextLine();//清除用户输入，然后返回到while的开始
+
+
+        }//main方法的唯一一个while的大括号
+
+    }//main方法的大括号
+}//test大类的大括号
