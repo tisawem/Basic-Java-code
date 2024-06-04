@@ -55,7 +55,7 @@ public class java枚举常量合成类 {
     String 合成Java代码() {
         String java_code = "";
         Random random = new Random();
-        for (int i = 0; i < random.nextInt(0, 16); i++) {
+        for (int i = 0; i < 16; i++) {
             java_code += (char) random.nextInt(19968, 40959);
         }
         java_code += "(\"" + this.获取题目() + "\",new LinkedHashMap<>() {{\n ";
