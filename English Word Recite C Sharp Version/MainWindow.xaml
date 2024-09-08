@@ -1,0 +1,52 @@
+﻿<Window x:Class="English_Word_Recite_C_Sharp_Version.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:English_Word_Recite_C_Sharp_Version"
+        mc:Ignorable="d"
+        Title="English Word Recite C# Version" Height="800" Width="450">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="35*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="4" SelectionChanged="TabControl_SelectionChanged">
+            <TabItem Header="配置">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="选择原文" Content="选择原文" HorizontalAlignment="Left" Margin="27,347,0,0" VerticalAlignment="Top" FontSize="24" Background="White" Click="Button_Click"/>
+                    <Button x:Name="选择译文" Content="选择译文" HorizontalAlignment="Left" Margin="27,444,0,0" VerticalAlignment="Top" FontSize="24" Background="White" Click="选择译文_Click"/>
+                    <TextBox x:Name="SelectedOriginalFiles" HorizontalAlignment="Left" Margin="27,392,0,0" TextWrapping="Wrap" Text="原文路径" VerticalAlignment="Top" Width="345" Height="30" TextChanged="TextBox_TextChanged"/>
+                    <TextBox x:Name="SelectedTranslationFiles" HorizontalAlignment="Left" Margin="27,502,0,0" TextWrapping="Wrap" Text="译文路径" VerticalAlignment="Top" Width="345" Height="30" TextChanged="TextBox_TextChanged_1"/>
+                    <Button Content="开始测试" HorizontalAlignment="Left" Margin="114,599,0,0" VerticalAlignment="Top" FontSize="36" Background="White" Height="93" Width="198" Click="Button_Click_3"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="关于">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock HorizontalAlignment="Center" Margin="0,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Width="424"><Run Text="English Word Recite "/><LineBreak/><Run Text="C# Version"/></TextBlock>
+
+                    <TextBlock HorizontalAlignment="Left" Margin="10,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"><Run Text="Copy"/><Run Language="zh-cn" Text="r"/><Run Text="ight 2020-2024, Tisawem東北項目, All Rights Reserved."/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,175,0,0" TextWrapping="Wrap" Text="许可证： MIT License" VerticalAlignment="Top" FontSize="24"/>
+                    <Label Content="这个缩水版的程序由一大坨屎山代码构成" HorizontalAlignment="Left" Margin="10,222,0,0" VerticalAlignment="Top" Height="85" Width="397" FontSize="20"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="词汇表">
+
+                <Grid>
+                    <ListBox x:Name="原文列表项" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,47,302,0" SelectionChanged="ListBox_SelectionChanged_1"/>
+                    <ListBox x:Name="译文列表项" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="272,47,30,0" SelectionChanged="ListBox_SelectionChanged_2"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="22,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="370" FontSize="22"><Run Text="原文           "/><Run Language="zh-cn" Text="                        "/><Run Text="     译文"/></TextBlock>
+                    <Button Content="打乱" Margin="157,47,0,0" HorizontalAlignment="Left" Height="50" Width="100" VerticalAlignment="Top" Click="Button_Click_1"/>
+
+                    <Button Content="还原" Margin="157,127,0,0" HorizontalAlignment="Left" Height="50" Width="100" VerticalAlignment="Top" Click="Button_Click_2"/>
+
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Window>
