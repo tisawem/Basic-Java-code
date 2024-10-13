@@ -98,7 +98,7 @@ public @interface NoJavaAPI {
             You are ungrateful; helping users only brings frustration, and when mistakes happen, we get blamed.
             You are slaves to Java, unaware of Kotlin, Scala, Groovy, or Clojure.
             You are obstinate and stagnant, clinging to JDK 1.8. When new syntax causes errors, you blame us developers.
-            You are cheapskates, broke, idiots, and fools. Fuck you.
+            You are cheapskates, broke, idiots, douchebags, dumbasses, and dipshits. Fuck you.
             So, I swear, as a JVM programmer:
             I don't need to be generous—less is more.
             I refuse to help idiots who only know Java, those who lack basic knowledge, nitpickers, and ingrates.
